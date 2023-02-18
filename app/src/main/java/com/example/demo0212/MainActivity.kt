@@ -3,6 +3,7 @@ package com.example.demo0212
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 
@@ -27,18 +28,19 @@ class MainActivity : AppCompatActivity() {
         println("El usuario dio click en el boton ${button.id}")
         val result = findViewById<TextView>(R.id.txtResult)
         if(button.id == R.id.btnRight && rightNumber>leftNumber) {
-            Toast.makeText(this, "Has ganado!", Toast.LENGTH_LONG).show()
             result.text = "Has ganado!!"
         }
         else if(button.id == R.id.btnLeft && rightNumber<leftNumber) {
-            Toast.makeText(this, "Has ganado!", Toast.LENGTH_LONG).show()
             result.text = "Has ganado!!"
         }
         else {
-            Toast.makeText(this, "Has perdido :(", Toast.LENGTH_LONG).show()
             result.text = "Has perdido :("
         }
         assignNumbers()
+
+        // leer el texto del usuario
+        val edit = findViewById<EditText>(R.id.inpText)
+        Toast.makeText(this, edit.text.toString(), Toast.LENGTH_SHORT).show()
     }
 
     fun rightClick(p: View) {
